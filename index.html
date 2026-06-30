@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lezzet-i Antep Kebap & Lahmacun — Ümraniye</title>
+  <meta name="description" content="Lezzet-i Antep Kebap & Lahmacun, Ümraniye Çamlık'ta Gaziantep mutfağının özgün lezzetleri. Adana kebap, lahmacun, pide. Migros Yemek ile online sipariş." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-dark: #1a0f0a;
+      --bg-card: #241510;
+      --bg-footer: #120a06;
+      --bg-light: #f7f2ea;
+      --accent-red: #c0392b;
+      --accent-brown: #5c3317;
+      --accent-amber: #c9922a;
+      --white: #ffffff;
+      --text-muted: rgba(255,255,255,0.65);
+      --radius: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      background: var(--bg-dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ───── PROGRESS BAR ───── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(to right, var(--accent-red), var(--accent-brown));
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ───── NAVBAR ───── */
+    #navbar {
+      position: fixed;
+      top: 3px; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(18,10,6,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--accent-red);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 68px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .nav-logo-top {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      color: var(--accent-red);
+      letter-spacing: 0.05em;
+    }
+    .nav-logo-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent-red); }
+
+    .btn-order {
+      background: var(--accent-red);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.2s !important;
+    }
+    .btn-order:hover { background: #a93226 !important; color: var(--white) !important; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--accent-red);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(18,10,6,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent-red); }
+    .mobile-menu .btn-order {
+      padding: 12px 28px;
+      border-radius: 8px;
+    }
+    .mobile-close {
+      position: absolute;
+      top: 22px; right: 28px;
+      background: none;
+      border: none;
+      color: var(--accent-red);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* ───── HERO ───── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('images/hero.png') center center / cover no-repeat;
+      padding: 100px 24px 60px;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(18,10,6,0.65);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50px;
+      padding: 7px 18px;
+      font-size: 0.85rem;
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 28px;
+      backdrop-filter: blur(6px);
+      transition: background 0.2s;
+    }
+    .google-badge:hover { background: rgba(255,255,255,0.18); }
+
+    .hero-title-top {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 8rem);
+      color: var(--accent-red);
+      letter-spacing: 0.04em;
+      line-height: 0.9;
+    }
+    .hero-title-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .hero-tagline {
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .hero-icons span { display: flex; align-items: center; gap: 7px; }
+    .hero-icons .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-red); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .btn-primary {
+      background: var(--accent-red);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #a93226; transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+      padding: 11px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .blink-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+    /* ───── PILLARS ───── */
+    #pillars {
+      background: var(--bg-card);
+      border-top: 1px solid rgba(192,57,43,0.3);
+      border-bottom: 1px solid rgba(192,57,43,0.3);
+      padding: 56px 24px;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pillar-card {
+      background: var(--bg-dark);
+      border: 1px solid rgba(192,57,43,0.35);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pillar-card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
+    .pillar-icon { margin-bottom: 14px; }
+    .pillar-icon img { width: 42px; height: 42px; }
+    .pillar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--accent-red);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+    .pillar-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ───── MENU SECTION ───── */
+    #menu {
+      background: var(--bg-light);
+      padding: 72px 24px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      text-align: center;
+      letter-spacing: 0.04em;
+      margin-bottom: 40px;
+    }
+    .menu-section-title { color: var(--bg-dark); }
+
+    .tabs-wrapper {
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+      -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .tabs-wrapper::-webkit-scrollbar { display: none; }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      padding: 4px;
+      flex-wrap: nowrap;
+    }
+    .tab-btn {
+      white-space: nowrap;
+      padding: 9px 18px;
+      border-radius: 50px;
+      border: 2px solid var(--accent-red);
+      background: transparent;
+      color: var(--accent-red);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent-red);
+      color: var(--white);
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .item-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid rgba(92,51,23,0.12);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 24px rgba(192,57,43,0.18);
+      border-color: var(--accent-red);
+    }
+    .item-card img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover;
+      background: #ecddd4;
+    }
+    .item-info { padding: 14px 16px; }
+    .item-name {
+      font-weight: 500;
+      color: var(--bg-dark);
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    .item-desc {
+      font-size: 0.8rem;
+      color: #7a5a4a;
+      line-height: 1.5;
+    }
+
+    /* Placeholder */
+    .img-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #ecddd4, #dbc9b8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b08060;
+    }
+    .img-placeholder img { width: 52px; height: 52px; opacity: 0.6; }
+
+    /* ───── GALLERY ───── */
+    #gallery {
+      background: var(--bg-dark);
+      padding: 72px 24px;
+    }
+    .gallery-title { color: var(--white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(18,10,6,0.85));
+      padding: 18px 14px 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ───── ABOUT ───── */
+    #about {
+      background: var(--bg-light);
+      padding: 72px 24px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .about-img img {
+      width: 100%; height: 420px; object-fit: cover;
+    }
+    .about-text h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--bg-dark);
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+    .about-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--accent-brown);
+      margin-bottom: 20px;
+    }
+    .about-body {
+      color: #4a3020;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .about-stats {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+      border-left: 3px solid var(--accent-red);
+      padding-left: 14px;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      color: var(--accent-red);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: #7a5a4a;
+      font-weight: 500;
+    }
+
+    /* ───── REVIEWS ───── */
+    #reviews {
+      background: var(--bg-card);
+      padding: 72px 24px;
+    }
+    .reviews-title { color: var(--white); }
+    .reviews-subtitle {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .reviews-subtitle a {
+      color: var(--accent-amber);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .reviews-subtitle a:hover { text-decoration: underline; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: var(--bg-dark);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      border: 1px solid rgba(192,57,43,0.2);
+      transition: border-color 0.3s;
+    }
+    .review-card:hover { border-color: var(--accent-red); }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 14px;
+    }
+    .review-stars img { width: 18px; height: 18px; }
+    .review-text {
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .review-author {
+      font-size: 0.82rem;
+      color: var(--accent-amber);
+      font-weight: 500;
+    }
+
+    /* ───── ORDER SECTION ───── */
+    #order {
+      background: var(--accent-red);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    #order h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 36px;
+    }
+    .order-card {
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      max-width: 480px;
+      margin: 0 auto;
+      transition: background 0.2s;
+    }
+    .order-card:hover { background: rgba(255,255,255,0.18); }
+    .order-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .order-card-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 22px;
+    }
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--accent-red);
+      padding: 13px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-white:hover { background: #f0e8e0; transform: translateY(-2px); }
+
+    /* ───── CONTACT ───── */
+    #contact {
+      background: var(--bg-dark);
+      padding: 72px 24px;
+    }
+    .contact-title { color: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-info { color: rgba(255,255,255,0.85); }
+    .contact-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent-red);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 0.93rem;
+    }
+    .contact-detail i { color: var(--accent-red); width: 18px; margin-top: 2px; }
+    .hours-table { font-size: 0.9rem; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--accent-amber); font-weight: 500; }
+    .map-wrap {
+      margin-top: 22px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(192,57,43,0.3);
+    }
+
+    /* Contact form */
+    .contact-form h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent-red);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid rgba(192,57,43,0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent-red); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      background: var(--accent-red);
+      color: var(--white);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      width: 100%;
+    }
+    .btn-submit:hover { background: #a93226; transform: translateY(-2px); }
+    .form-success {
+      display: none;
+      background: rgba(192,57,43,0.15);
+      border: 1px solid var(--accent-red);
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: var(--white);
+      font-size: 0.93rem;
+      margin-top: 12px;
+    }
+    .form-success.visible { display: block; }
+
+    /* ───── FOOTER ───── */
+    footer {
+      background: var(--bg-footer);
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px solid rgba(192,57,43,0.25);
+    }
+    .footer-logo { text-decoration: none; display: flex; flex-direction: column; }
+    .footer-logo-top {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent-red);
+      letter-spacing: 0.06em;
+    }
+    .footer-logo-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.06em;
+    }
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+    .footer-order a {
+      color: var(--accent-red);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-order a:hover { color: #e74c3c; }
+
+    /* ───── SCROLL ANIMATION ───── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      .pillars-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+
+      footer { justify-content: center; text-align: center; }
+      .footer-order { width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      #navbar { padding: 0 18px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .hero-title-top { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-top">Lezzet-i</span>
+    <span class="nav-logo-sub">ANTEP</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menü</a></li>
+    <li><a href="#about">Hakkımızda</a></li>
+    <li><a href="#reviews">Yorumlar</a></li>
+    <li><a href="#contact">İletişim</a></li>
+    <li><a href="https://www.migros.com.tr/yemek/lezzet-i-antep-kebap-lahmacun-umraniye-camlik-mah-st-225a9" target="_blank" rel="noopener" class="btn-order">Sipariş Ver</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menüyü aç">
+    <i class="fas fa-bars"></i>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Kapat">
+    <i class="fas fa-xmark"></i>
+  </button>
+  <a href="#menu" class="mobile-link">Menü</a>
+  <a href="#about" class="mobile-link">Hakkımızda</a>
+  <a href="#reviews" class="mobile-link">Yorumlar</a>
+  <a href="#contact" class="mobile-link">İletişim</a>
+  <a href="https://www.migros.com.tr/yemek/lezzet-i-antep-kebap-lahmacun-umraniye-camlik-mah-st-225a9" target="_blank" rel="noopener" class="btn-order">Sipariş Ver</a>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="https://www.google.com/search?q=Lezzet-i+antep+kebap+lahmacun+Reviews" target="_blank" rel="noopener" class="google-badge">
+      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="16" height="16" alt="yıldız" />
+      Google 4.7/5 &middot; 28 değerlendirme
+    </a>
+    <div class="hero-title-top">LEZZET-İ</div>
+    <div class="hero-title-sub">ANTEP</div>
+    <p class="hero-tagline">Gaziantep mutfağının özgün lezzeti — közde közlenen kebap, fırından sıcak pide</p>
+    <div class="hero-icons">
+      <span>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f525.svg" width="20" height="20" alt="ateş" />
+        Közde Kebap
+      </span>
+      <span class="dot"></span>
+      <span>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" width="20" height="20" alt="ekmek" />
+        Fırın Ürünleri
+      </span>
+      <span class="dot"></span>
+      <span>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" width="20" height="20" alt="dürüm" />
+        Dürüm Çeşitleri
+      </span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">Menüyü Gör</a>
+      <a href="https://www.migros.com.tr/yemek/lezzet-i-antep-kebap-lahmacun-umraniye-camlik-mah-st-225a9" target="_blank" rel="noopener" class="btn-outline">Sipariş Ver</a>
+    </div>
+    <div class="open-badge">
+      <span class="blink-dot"></span>
+      Açık &middot; 10:00–22:30
+    </div>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section id="pillars">
+  <div class="pillars-grid">
+    <div class="pillar-card fade-up">
+      <div class="pillar-icon">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f525.svg" alt="Közde Kebap" />
+      </div>
+      <div class="pillar-title">Antep'in Közü</div>
+      <p class="pillar-text">Adana, urfa, haşhaşlı kebap — közlenmiş domates ve biber eşliğinde taze pişiriliyor</p>
+    </div>
+    <div class="pillar-card fade-up">
+      <div class="pillar-icon">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="Fırın Ürünleri" />
+      </div>
+      <div class="pillar-title">Fırından Sıcak</div>
+      <p class="pillar-text">İnce hamurlu lahmacun, kaşarlı ve kıymalı pideler fırından sofraya</p>
+    </div>
+    <div class="pillar-card fade-up">
+      <div class="pillar-icon">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="Dürümler" />
+      </div>
+      <div class="pillar-title">Doyurucu Dürümler</div>
+      <p class="pillar-text">Adana dürüm, urfa dürüm, kaşarlı çeşitler — hızlı ve lezzetli seçenekler</p>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu">
+  <h2 class="section-title menu-section-title">MENÜMÜZ</h2>
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="kebaplar">Kebaplar &amp; Izgaralar</button>
+      <button class="tab-btn" data-tab="firin">Fırın Ürünleri</button>
+      <button class="tab-btn" data-tab="durumlar">Dürümler</button>
+      <button class="tab-btn" data-tab="mezeler">Mezeler &amp; Diğer</button>
+      <button class="tab-btn" data-tab="salatalar">Salatalar</button>
+      <button class="tab-btn" data-tab="tatlilar">Tatlilar</button>
+      <button class="tab-btn" data-tab="icecekler">İçecekler</button>
+    </div>
+  </div>
+
+  <!-- KEBAPLAR & IZGARALAR -->
+  <div class="menu-panel active" id="tab-kebaplar">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323827/01323827-1efcab.jpg" alt="Adana Kebap"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Adana Kebap</div>
+          <div class="item-desc">Köz biber, köz domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323844/01323844-a94d60.jpg" alt="Urfa Kebap"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Urfa Kebap</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323836/01323836-a3809a.jpg" alt="Haşhaşlı Kebap"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Haşhaşlı Kebap</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti Kebap"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Fırında Sarma Beyti Kebap ⭐</div>
+          <div class="item-desc">Közlenmiş domates, közlenmiş biber, kaşar peyniri ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323809/01323809-58ab74.jpg" alt="Domatesli Kebap"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Domatesli Kebap</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Patlıcanlı Kebap</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323830/01323830-6c6b8a.jpg" alt="Tavuk Şiş"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f357.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Tavuk Şiş</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f357.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Tavuk Kanat</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Et Çöp Şiş</div>
+          <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FIRIN ÜRÜNLERİ -->
+  <div class="menu-panel" id="tab-firin">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323826/01323826-d411a5.jpg" alt="Lahmacun"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Lahmacun ⭐</div>
+          <div class="item-desc">Mevsim yeşillikleri, biber turşusu ile</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323849/01323849-6fde6a.jpg" alt="Kaşarlı Pide"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kaşarlı Pide</div>
+          <div class="item-desc">Kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323819/01323819-c7c457.jpg" alt="Kıymalı Pide"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kıymalı Pide</div>
+          <div class="item-desc">Kıyma</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323824/01323824-d38ca8.jpg" alt="Kuşbaşılı Pide"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kuşbaşılı Pide</div>
+          <div class="item-desc">Kuşbaşı</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323845/01323845-0db847.jpg" alt="Kavurmalı Kaşarlı Pide"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kavurmalı Kaşarlı Pide</div>
+          <div class="item-desc">Kavurma, kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323853/01323853-f95bac.jpg" alt="Karışık Pide"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Karışık Pide ⭐</div>
+          <div class="item-desc">Kıyma, kaşar peyniri, sucuk, kuşbaşı</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kaşarlı Sucuklu Pide</div>
+          <div class="item-desc">Rendelenmiş kaşar peyniri ve sucuk</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kıymalı Kaşarlı Pide</div>
+          <div class="item-desc">Kıyma ve rendelenmiş kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kuşbaşılı Kaşarlı Pide</div>
+          <div class="item-desc">Kuşbaşı et ve kaşar peyniri</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÜRÜMLER -->
+  <div class="menu-panel" id="tab-durumlar">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323807/01323807-c445c7.jpg" alt="Adana Dürüm"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Adana Dürüm ⭐</div>
+          <div class="item-desc">Domates, soğan, maydanoz</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Et Çöp Şiş Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323847/01323847-15ef57.jpg" alt="Urfa Dürüm"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Urfa Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Lezzeti Special Dürüm</div>
+          <div class="item-desc">Adana kebap, közlenmiş domates, közlenmiş biber, kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323846/01323846-845165.jpg" alt="Kaşarlı Adana Dürüm"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kaşarlı Adana Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kaşarlı Urfa Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323831/01323831-91686f.jpg" alt="Tavuk Şiş Dürüm"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Tavuk Şiş Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Kaşarlı Tavuk Şiş Dürüm</div>
+          <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MEZELER & DİĞER -->
+  <div class="menu-panel" id="tab-mezeler">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c6.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Çiğ Köfte</div>
+          <div class="item-desc">Tek kişilik</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Sac Kavurma</div>
+          <div class="item-desc">Günlük hazırlanır</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SALATALAR -->
+  <div class="menu-panel" id="tab-salatalar">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323837/01323837-4f3ea3.jpg" alt="Çoban Salata"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Çoban Salata</div>
+          <div class="item-desc">Domates, biber, salatalık</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Roka Salata</div>
+          <div class="item-desc">Roka</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323860/01323860-08283a.jpg" alt="Mevsim Salata"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Mevsim Salata</div>
+          <div class="item-desc">Mevsim sebzeleri</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <img src="https://images.migrosone.com/yemek/product/01323851/01323851-fa2977.jpg" alt="Gavurdağı Salatası"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Gavurdağı Salatası</div>
+          <div class="item-desc">Domates, salatalık, soğan, biber ve nar ekşisi ile</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TATLILAR -->
+  <div class="menu-panel" id="tab-tatlilar">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f36f.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Künefe</div>
+          <div class="item-desc">Fıstık</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f36f.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Antep Katmer</div>
+          <div class="item-desc">Fıstık</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- İÇECEKLER -->
+  <div class="menu-panel" id="tab-icecekler">
+    <div class="menu-grid">
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Pepsi / Pepsi Max</div>
+          <div class="item-desc">33cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Yedigün / 7Up</div>
+          <div class="item-desc">33cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Tropicana / Lipton Ice Tea</div>
+          <div class="item-desc">33cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Şalgam Suyu</div>
+          <div class="item-desc">30cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Ayran</div>
+          <div class="item-desc">27cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c3.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Soda</div>
+          <div class="item-desc">20cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4a7.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Su</div>
+          <div class="item-desc">50cl</div>
+        </div>
+      </div>
+
+      <div class="item-card fade-up">
+        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="item-info">
+          <div class="item-name">Pepsi / Pepsi Max / Yedigün</div>
+          <div class="item-desc">1L</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <h2 class="section-title gallery-title">LEZZETLERİMİZ</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323827/01323827-1efcab.jpg" alt="Adana Kebap"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg'" />
+      <div class="gallery-caption">Adana Kebap</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg'" />
+      <div class="gallery-caption">Fırında Sarma Beyti Kebap</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323826/01323826-d411a5.jpg" alt="Lahmacun"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg'" />
+      <div class="gallery-caption">Lahmacun</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323853/01323853-f95bac.jpg" alt="Karışık Pide"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg'" />
+      <div class="gallery-caption">Karışık Pide</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323807/01323807-c445c7.jpg" alt="Adana Dürüm"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg'" />
+      <div class="gallery-caption">Adana Dürüm</div>
+    </div>
+    <div class="gallery-item fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323851/01323851-fa2977.jpg" alt="Gavurdağı Salatası"
+        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg'" />
+      <div class="gallery-caption">Gavurdağı Salatası</div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img fade-up">
+      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti Kebap"
+        onerror="this.style.display='none'" />
+    </div>
+    <div class="about-text fade-up">
+      <h3>Antep'in Lezzeti,<br>Ümraniye'de.</h3>
+      <p class="about-sub">Közde pişen kebap, fırından sıcak pide.</p>
+      <p class="about-body">
+        Lezzet-i Antep Kebap &amp; Lahmacun, Gaziantep mutfağının özgün lezzetlerini Çamlık Mahallesi'ne taşıyor. Adana'dan urfa'ya, haşhaşlıdan domatesliye geniş bir kebap yelpazesi, közlenmiş domates ve biber eşliğinde servis ediliyor. Google'da 4.7 puanla bölgenin güvenilir adreslerinden biri.
+      </p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">4.7★</div>
+          <div class="stat-label">Google</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">28</div>
+          <div class="stat-label">Değerlendirme</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Çamlık</div>
+          <div class="stat-label">Mahallesi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section id="reviews">
+  <h2 class="section-title reviews-title">MÜŞTERİLERİMİZ NE DİYOR</h2>
+  <div class="reviews-subtitle">
+    <a href="https://www.google.com/search?q=Lezzet-i+antep+kebap+lahmacun+Reviews" target="_blank" rel="noopener">
+      Google değerlendirmelerini gör &rarr;
+    </a>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-up">
+      <div class="review-stars">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+      </div>
+      <p class="review-text">"Adana kebap tam kıvamında, közlenmiş domates ve biberle servis ediliyor, gerçekten lezzetli."</p>
+      <div class="review-author">— Google</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="review-stars">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+      </div>
+      <p class="review-text">"Lahmacunu ince hamurlu ve baharatlı, tam Antep usulü."</p>
+      <div class="review-author">— Google</div>
+    </div>
+    <div class="review-card fade-up">
+      <div class="review-stars">
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+      </div>
+      <p class="review-text">"Karışık pide çok doyurucu, fiyatına değer."</p>
+      <div class="review-author">— Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- Order -->
+<section id="order">
+  <h2>ONLİNE SİPARİŞ VER!</h2>
+  <div class="order-card">
+    <div class="order-card-title">Migros Yemek</div>
+    <p class="order-card-sub">Tek tıkla sipariş — kapına gelsin</p>
+    <a href="https://www.migros.com.tr/yemek/lezzet-i-antep-kebap-lahmacun-umraniye-camlik-mah-st-225a9" target="_blank" rel="noopener" class="btn-white">Sipariş Ver</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2 class="section-title contact-title">İLETİŞİM</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Bize Ulaşın</h3>
+
+      <div class="contact-detail">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Çamlık, Civan Sk. No:82 B, 34764 Ümraniye/İstanbul</span>
+      </div>
+      <div class="contact-detail">
+        <i class="fas fa-phone"></i>
+        <span><a href="tel:02165947258" style="color:inherit;text-decoration:none;">(0216) 594 72 58</a></span>
+      </div>
+
+      <div style="margin-top:20px;margin-bottom:10px;font-size:0.88rem;color:var(--accent-amber);font-weight:500;letter-spacing:0.04em;">ÇALIŞMA SAATLERİ</div>
+      <div class="hours-table">
+        <div class="hours-row">
+          <span class="hours-day">Salı</span>
+          <span>10:30 – 22:30</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Çarşamba – Pazartesi</span>
+          <span>10:00 – 22:30</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-day">Cumartesi</span>
+          <span>10:00 – 22:00</span>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Çamlık+Civan+Sk.+82+B,+Ümraniye+İstanbul&output=embed"
+          width="100%" height="320"
+          style="border:0;display:block;"
+          allowfullscreen
+          loading="lazy"
+          title="Harita">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Mesaj Gönderin</h3>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="formName" placeholder="Adınız" required />
+        </div>
+        <div class="form-group">
+          <input type="tel" id="formPhone" placeholder="Telefon numaranız" />
+        </div>
+        <div class="form-group">
+          <textarea id="formMessage" placeholder="Mesajınız" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Gönder</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        Mesajınız alındı, en kısa sürede dönüş yapacağız!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="#" class="footer-logo">
+    <span class="footer-logo-top">Lezzet-i</span>
+    <span class="footer-logo-sub">Kebap &amp; Lahmacun &middot; Çamlık &middot; Ümraniye</span>
+  </a>
+  <div class="footer-copy">&copy; 2026 &middot; Lezzet-i Antep &middot; İstanbul</div>
+  <div class="footer-order">
+    <a href="https://www.migros.com.tr/yemek/lezzet-i-antep-kebap-lahmacun-umraniye-camlik-mah-st-225a9" target="_blank" rel="noopener">
+      Migros Yemek'ten Sipariş Ver
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress-bar');
+    const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    el.style.width = Math.min(scrolled, 100) + '%';
+  });
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      triggerFadeUp();
+    });
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  mobileClose.addEventListener('click', closeMobile);
+  document.querySelectorAll('.mobile-link').forEach(a => {
+    a.addEventListener('click', closeMobile);
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Fade-up
+  function triggerFadeUp() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => observer.observe(el));
+  }
+  triggerFadeUp();
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('formSuccess').classList.add('visible');
+    this.reset();
+  });
+</script>
+</body>
+</html>
