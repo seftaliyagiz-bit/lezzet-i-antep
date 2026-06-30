@@ -11,22 +11,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
-      --bg-dark: #1a0f0a;
-      --bg-card: #241510;
-      --bg-footer: #120a06;
-      --bg-light: #f7f2ea;
-      --accent-red: #c0392b;
-      --accent-brown: #5c3317;
-      --accent-amber: #c9922a;
+      --bg-dark: #0f1f10;
+      --bg-card: #162918;
+      --bg-footer: #080f08;
+      --bg-light: #f2f9f2;
+      --accent-green: #2d8a3e;
+      --accent-green-dark: #1e6b2f;
+      --accent-orange: #e8820c;
+      --accent-orange-dark: #c96e08;
       --white: #ffffff;
       --text-muted: rgba(255,255,255,0.65);
       --radius: 10px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       font-weight: 400;
@@ -41,7 +40,7 @@
       top: 0; left: 0;
       height: 3px;
       width: 0%;
-      background: linear-gradient(to right, var(--accent-red), var(--accent-brown));
+      background: linear-gradient(to right, var(--accent-orange), var(--accent-green));
       z-index: 9999;
       transition: width 0.1s linear;
     }
@@ -51,9 +50,9 @@
       position: fixed;
       top: 3px; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(18,10,6,0.96);
+      background: rgba(8,15,8,0.96);
       backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--accent-red);
+      border-bottom: 2px solid var(--accent-green);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -70,7 +69,7 @@
     .nav-logo-top {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.7rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.05em;
     }
     .nav-logo-sub {
@@ -95,23 +94,23 @@
       letter-spacing: 0.03em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--accent-red); }
+    .nav-links a:hover { color: var(--accent-orange); }
 
     .btn-order {
-      background: var(--accent-red);
+      background: var(--accent-orange);
       color: var(--white) !important;
       padding: 9px 20px;
       border-radius: 6px;
       font-weight: 500;
       transition: background 0.2s !important;
     }
-    .btn-order:hover { background: #a93226 !important; color: var(--white) !important; }
+    .btn-order:hover { background: var(--accent-orange-dark) !important; color: var(--white) !important; }
 
     .hamburger {
       display: none;
       background: none;
       border: none;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       font-size: 1.5rem;
       cursor: pointer;
     }
@@ -121,7 +120,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(18,10,6,0.98);
+      background: rgba(8,15,8,0.98);
       z-index: 999;
       flex-direction: column;
       align-items: center;
@@ -137,17 +136,14 @@
       letter-spacing: 0.04em;
       transition: color 0.2s;
     }
-    .mobile-menu a:hover { color: var(--accent-red); }
-    .mobile-menu .btn-order {
-      padding: 12px 28px;
-      border-radius: 8px;
-    }
+    .mobile-menu a:hover { color: var(--accent-orange); }
+    .mobile-menu .btn-order { padding: 12px 28px; border-radius: 8px; }
     .mobile-close {
       position: absolute;
       top: 22px; right: 28px;
       background: none;
       border: none;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       font-size: 1.8rem;
       cursor: pointer;
     }
@@ -166,7 +162,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(18,10,6,0.65);
+      background: rgba(8,15,8,0.68);
     }
     .hero-content {
       position: relative;
@@ -191,11 +187,12 @@
       transition: background 0.2s;
     }
     .google-badge:hover { background: rgba(255,255,255,0.18); }
+    .google-badge i { color: var(--accent-orange); }
 
     .hero-title-top {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(4rem, 12vw, 8rem);
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.04em;
       line-height: 0.9;
     }
@@ -222,10 +219,11 @@
       flex-wrap: wrap;
       margin-bottom: 32px;
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.85);
     }
-    .hero-icons span { display: flex; align-items: center; gap: 7px; }
-    .hero-icons .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-red); }
+    .hero-icons span { display: flex; align-items: center; gap: 8px; }
+    .hero-icons i { color: var(--accent-orange); font-size: 1rem; }
+    .hero-icons .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent-green); }
 
     .hero-ctas {
       display: flex;
@@ -235,7 +233,7 @@
       margin-bottom: 28px;
     }
     .btn-primary {
-      background: var(--accent-red);
+      background: var(--accent-orange);
       color: var(--white);
       padding: 13px 28px;
       border-radius: 8px;
@@ -244,7 +242,7 @@
       font-size: 0.95rem;
       transition: background 0.2s, transform 0.2s;
     }
-    .btn-primary:hover { background: #a93226; transform: translateY(-2px); }
+    .btn-primary:hover { background: var(--accent-orange-dark); transform: translateY(-2px); }
     .btn-outline {
       border: 2px solid var(--white);
       color: var(--white);
@@ -267,7 +265,7 @@
     .blink-dot {
       width: 9px; height: 9px;
       border-radius: 50%;
-      background: var(--accent-red);
+      background: var(--accent-green);
       animation: blink 1.4s ease-in-out infinite;
     }
     @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
@@ -275,8 +273,8 @@
     /* ───── PILLARS ───── */
     #pillars {
       background: var(--bg-card);
-      border-top: 1px solid rgba(192,57,43,0.3);
-      border-bottom: 1px solid rgba(192,57,43,0.3);
+      border-top: 1px solid rgba(45,138,62,0.3);
+      border-bottom: 1px solid rgba(45,138,62,0.3);
       padding: 56px 24px;
     }
     .pillars-grid {
@@ -288,19 +286,27 @@
     }
     .pillar-card {
       background: var(--bg-dark);
-      border: 1px solid rgba(192,57,43,0.35);
+      border: 1px solid rgba(45,138,62,0.35);
       border-radius: var(--radius);
       padding: 32px 24px;
       text-align: center;
       transition: border-color 0.3s, transform 0.3s;
     }
-    .pillar-card:hover { border-color: var(--accent-red); transform: translateY(-4px); }
-    .pillar-icon { margin-bottom: 14px; }
-    .pillar-icon img { width: 42px; height: 42px; }
+    .pillar-card:hover { border-color: var(--accent-green); transform: translateY(-4px); }
+    .pillar-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(232,130,12,0.12);
+      border: 2px solid rgba(232,130,12,0.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.4rem;
+      color: var(--accent-orange);
+    }
     .pillar-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.3rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.04em;
       margin-bottom: 10px;
     }
@@ -342,9 +348,9 @@
       white-space: nowrap;
       padding: 9px 18px;
       border-radius: 50px;
-      border: 2px solid var(--accent-red);
+      border: 2px solid var(--accent-green);
       background: transparent;
-      color: var(--accent-red);
+      color: var(--accent-green);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem;
       font-weight: 500;
@@ -352,7 +358,7 @@
       transition: background 0.2s, color 0.2s;
     }
     .tab-btn.active, .tab-btn:hover {
-      background: var(--accent-red);
+      background: var(--accent-green);
       color: var(--white);
     }
 
@@ -370,19 +376,20 @@
     .item-card {
       background: var(--white);
       border-radius: var(--radius);
-      border: 1px solid rgba(92,51,23,0.12);
+      border: 1px solid rgba(45,138,62,0.15);
       overflow: hidden;
       transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
       cursor: default;
     }
     .item-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 24px rgba(192,57,43,0.18);
-      border-color: var(--accent-red);
+      box-shadow: 0 6px 24px rgba(45,138,62,0.18);
+      border-color: var(--accent-green);
     }
     .item-card img {
       width: 100%; aspect-ratio: 4/3; object-fit: cover;
-      background: #ecddd4;
+      background: #d8edd8;
+      display: block;
     }
     .item-info { padding: 14px 16px; }
     .item-name {
@@ -393,20 +400,19 @@
     }
     .item-desc {
       font-size: 0.8rem;
-      color: #7a5a4a;
+      color: #4a6a4a;
       line-height: 1.5;
     }
 
-    /* Placeholder */
     .img-placeholder {
       width: 100%; aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #ecddd4, #dbc9b8);
+      background: linear-gradient(135deg, #d4edd4, #bfdfbf);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #b08060;
+      color: var(--accent-green);
+      font-size: 2rem;
     }
-    .img-placeholder img { width: 52px; height: 52px; opacity: 0.6; }
 
     /* ───── GALLERY ───── */
     #gallery {
@@ -430,12 +436,13 @@
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.4s;
+      display: block;
     }
     .gallery-item:hover img { transform: scale(1.06); }
     .gallery-caption {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      background: linear-gradient(transparent, rgba(18,10,6,0.85));
+      background: linear-gradient(transparent, rgba(8,15,8,0.85));
       padding: 18px 14px 12px;
       font-size: 0.88rem;
       font-weight: 500;
@@ -457,9 +464,11 @@
     .about-img {
       border-radius: var(--radius);
       overflow: hidden;
+      border: 3px solid rgba(45,138,62,0.3);
     }
     .about-img img {
       width: 100%; height: 420px; object-fit: cover;
+      display: block;
     }
     .about-text h3 {
       font-family: 'Bebas Neue', sans-serif;
@@ -472,11 +481,11 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.1rem;
-      color: var(--accent-brown);
+      color: var(--accent-green-dark);
       margin-bottom: 20px;
     }
     .about-body {
-      color: #4a3020;
+      color: #2a4a2a;
       font-size: 0.97rem;
       line-height: 1.8;
       margin-bottom: 28px;
@@ -488,17 +497,17 @@
     }
     .stat {
       text-align: center;
-      border-left: 3px solid var(--accent-red);
+      border-left: 3px solid var(--accent-orange);
       padding-left: 14px;
     }
     .stat-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.7rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
     }
     .stat-label {
       font-size: 0.8rem;
-      color: #7a5a4a;
+      color: #4a6a4a;
       font-weight: 500;
     }
 
@@ -513,7 +522,7 @@
       margin-bottom: 40px;
     }
     .reviews-subtitle a {
-      color: var(--accent-amber);
+      color: var(--accent-orange);
       text-decoration: none;
       font-size: 0.9rem;
     }
@@ -530,16 +539,16 @@
       background: var(--bg-dark);
       border-radius: var(--radius);
       padding: 28px 24px;
-      border: 1px solid rgba(192,57,43,0.2);
+      border: 1px solid rgba(45,138,62,0.2);
       transition: border-color 0.3s;
     }
-    .review-card:hover { border-color: var(--accent-red); }
+    .review-card:hover { border-color: var(--accent-green); }
     .review-stars {
       display: flex;
-      gap: 3px;
+      gap: 4px;
       margin-bottom: 14px;
     }
-    .review-stars img { width: 18px; height: 18px; }
+    .review-stars i { color: var(--accent-orange); font-size: 1rem; }
     .review-text {
       font-style: italic;
       color: rgba(255,255,255,0.85);
@@ -549,13 +558,13 @@
     }
     .review-author {
       font-size: 0.82rem;
-      color: var(--accent-amber);
+      color: var(--accent-green);
       font-weight: 500;
     }
 
     /* ───── ORDER SECTION ───── */
     #order {
-      background: var(--accent-red);
+      background: var(--accent-green);
       padding: 72px 24px;
       text-align: center;
     }
@@ -585,13 +594,13 @@
     }
     .order-card-sub {
       font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 22px;
     }
     .btn-white {
       display: inline-block;
       background: var(--white);
-      color: var(--accent-red);
+      color: var(--accent-green-dark);
       padding: 13px 32px;
       border-radius: 8px;
       text-decoration: none;
@@ -599,7 +608,7 @@
       font-size: 1rem;
       transition: background 0.2s, transform 0.2s;
     }
-    .btn-white:hover { background: #f0e8e0; transform: translateY(-2px); }
+    .btn-white:hover { background: #e8f5e8; transform: translateY(-2px); }
 
     /* ───── CONTACT ───── */
     #contact {
@@ -618,7 +627,7 @@
     .contact-info h3 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.6rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.04em;
       margin-bottom: 22px;
     }
@@ -629,7 +638,7 @@
       margin-bottom: 14px;
       font-size: 0.93rem;
     }
-    .contact-detail i { color: var(--accent-red); width: 18px; margin-top: 2px; }
+    .contact-detail i { color: var(--accent-green); width: 18px; margin-top: 2px; }
     .hours-table { font-size: 0.9rem; }
     .hours-row {
       display: flex;
@@ -639,19 +648,18 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .hours-row:last-child { border-bottom: none; }
-    .hours-day { color: var(--accent-amber); font-weight: 500; }
+    .hours-day { color: var(--accent-orange); font-weight: 500; }
     .map-wrap {
       margin-top: 22px;
       border-radius: var(--radius);
       overflow: hidden;
-      border: 1px solid rgba(192,57,43,0.3);
+      border: 1px solid rgba(45,138,62,0.3);
     }
 
-    /* Contact form */
     .contact-form h3 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.6rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.04em;
       margin-bottom: 22px;
     }
@@ -660,7 +668,7 @@
     .form-group textarea {
       width: 100%;
       background: var(--bg-card);
-      border: 1px solid rgba(192,57,43,0.3);
+      border: 1px solid rgba(45,138,62,0.3);
       border-radius: 8px;
       padding: 12px 16px;
       color: var(--white);
@@ -670,12 +678,12 @@
       transition: border-color 0.2s;
     }
     .form-group input:focus,
-    .form-group textarea:focus { border-color: var(--accent-red); }
+    .form-group textarea:focus { border-color: var(--accent-green); }
     .form-group input::placeholder,
     .form-group textarea::placeholder { color: rgba(255,255,255,0.35); }
     .form-group textarea { resize: vertical; min-height: 110px; }
     .btn-submit {
-      background: var(--accent-red);
+      background: var(--accent-orange);
       color: var(--white);
       border: none;
       padding: 13px 28px;
@@ -687,11 +695,11 @@
       transition: background 0.2s, transform 0.2s;
       width: 100%;
     }
-    .btn-submit:hover { background: #a93226; transform: translateY(-2px); }
+    .btn-submit:hover { background: var(--accent-orange-dark); transform: translateY(-2px); }
     .form-success {
       display: none;
-      background: rgba(192,57,43,0.15);
-      border: 1px solid var(--accent-red);
+      background: rgba(45,138,62,0.15);
+      border: 1px solid var(--accent-green);
       border-radius: 8px;
       padding: 14px 18px;
       color: var(--white);
@@ -709,35 +717,35 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 20px;
-      border-top: 1px solid rgba(192,57,43,0.25);
+      border-top: 1px solid rgba(45,138,62,0.25);
     }
     .footer-logo { text-decoration: none; display: flex; flex-direction: column; }
     .footer-logo-top {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.5rem;
-      color: var(--accent-red);
+      color: var(--accent-orange);
       letter-spacing: 0.06em;
     }
     .footer-logo-sub {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.5);
       letter-spacing: 0.06em;
     }
     .footer-copy {
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.4);
       text-align: center;
     }
     .footer-order a {
-      color: var(--accent-red);
+      color: var(--accent-green);
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
       transition: color 0.2s;
     }
-    .footer-order a:hover { color: #e74c3c; }
+    .footer-order a:hover { color: #3dab52; }
 
     /* ───── SCROLL ANIMATION ───── */
     .fade-up {
@@ -751,17 +759,14 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: block; }
-
       .pillars-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .reviews-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
-
       footer { justify-content: center; text-align: center; }
       .footer-order { width: 100%; text-align: center; }
     }
-
     @media (max-width: 480px) {
       #navbar { padding: 0 18px; }
       .gallery-grid { grid-template-columns: 1fr; }
@@ -810,27 +815,18 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <a href="https://www.google.com/search?q=Lezzet-i+antep+kebap+lahmacun+Reviews" target="_blank" rel="noopener" class="google-badge">
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="16" height="16" alt="yıldız" />
+      <i class="fas fa-star"></i>
       Google 4.7/5 &middot; 28 değerlendirme
     </a>
     <div class="hero-title-top">LEZZET-İ</div>
     <div class="hero-title-sub">ANTEP</div>
     <p class="hero-tagline">Gaziantep mutfağının özgün lezzeti — közde közlenen kebap, fırından sıcak pide</p>
     <div class="hero-icons">
-      <span>
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f525.svg" width="20" height="20" alt="ateş" />
-        Közde Kebap
-      </span>
+      <span><i class="fas fa-fire"></i> Közde Kebap</span>
       <span class="dot"></span>
-      <span>
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" width="20" height="20" alt="ekmek" />
-        Fırın Ürünleri
-      </span>
+      <span><i class="fas fa-bread-slice"></i> Fırın Ürünleri</span>
       <span class="dot"></span>
-      <span>
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" width="20" height="20" alt="dürüm" />
-        Dürüm Çeşitleri
-      </span>
+      <span><i class="fas fa-utensils"></i> Dürüm Çeşitleri</span>
     </div>
     <div class="hero-ctas">
       <a href="#menu" class="btn-primary">Menüyü Gör</a>
@@ -847,23 +843,17 @@
 <section id="pillars">
   <div class="pillars-grid">
     <div class="pillar-card fade-up">
-      <div class="pillar-icon">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f525.svg" alt="Közde Kebap" />
-      </div>
+      <div class="pillar-icon"><i class="fas fa-fire"></i></div>
       <div class="pillar-title">Antep'in Közü</div>
       <p class="pillar-text">Adana, urfa, haşhaşlı kebap — közlenmiş domates ve biber eşliğinde taze pişiriliyor</p>
     </div>
     <div class="pillar-card fade-up">
-      <div class="pillar-icon">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="Fırın Ürünleri" />
-      </div>
+      <div class="pillar-icon"><i class="fas fa-bread-slice"></i></div>
       <div class="pillar-title">Fırından Sıcak</div>
       <p class="pillar-text">İnce hamurlu lahmacun, kaşarlı ve kıymalı pideler fırından sofraya</p>
     </div>
     <div class="pillar-card fade-up">
-      <div class="pillar-icon">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="Dürümler" />
-      </div>
+      <div class="pillar-icon"><i class="fas fa-utensils"></i></div>
       <div class="pillar-title">Doyurucu Dürümler</div>
       <p class="pillar-text">Adana dürüm, urfa dürüm, kaşarlı çeşitler — hızlı ve lezzetli seçenekler</p>
     </div>
@@ -892,7 +882,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323827/01323827-1efcab.jpg" alt="Adana Kebap"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Adana Kebap</div>
           <div class="item-desc">Köz biber, köz domates ile</div>
@@ -902,7 +892,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323844/01323844-a94d60.jpg" alt="Urfa Kebap"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Urfa Kebap</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -912,7 +902,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323836/01323836-a3809a.jpg" alt="Haşhaşlı Kebap"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Haşhaşlı Kebap</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -922,9 +912,9 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti Kebap"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
-          <div class="item-name">Fırında Sarma Beyti Kebap ⭐</div>
+          <div class="item-name">Fırında Sarma Beyti Kebap</div>
           <div class="item-desc">Közlenmiş domates, közlenmiş biber, kaşar peyniri ile</div>
         </div>
       </div>
@@ -932,7 +922,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323809/01323809-58ab74.jpg" alt="Domatesli Kebap"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Domatesli Kebap</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -940,7 +930,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Patlıcanlı Kebap</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -950,7 +940,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323830/01323830-6c6b8a.jpg" alt="Tavuk Şiş"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f357.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Tavuk Şiş</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -958,7 +948,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f357.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Tavuk Kanat</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -966,7 +956,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-drumstick-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Et Çöp Şiş</div>
           <div class="item-desc">Közlenmiş biber, közlenmiş domates ile</div>
@@ -983,9 +973,9 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323826/01323826-d411a5.jpg" alt="Lahmacun"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
-          <div class="item-name">Lahmacun ⭐</div>
+          <div class="item-name">Lahmacun</div>
           <div class="item-desc">Mevsim yeşillikleri, biber turşusu ile</div>
         </div>
       </div>
@@ -993,7 +983,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323849/01323849-6fde6a.jpg" alt="Kaşarlı Pide"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kaşarlı Pide</div>
           <div class="item-desc">Kaşar peyniri</div>
@@ -1003,7 +993,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323819/01323819-c7c457.jpg" alt="Kıymalı Pide"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kıymalı Pide</div>
           <div class="item-desc">Kıyma</div>
@@ -1013,7 +1003,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323824/01323824-d38ca8.jpg" alt="Kuşbaşılı Pide"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kuşbaşılı Pide</div>
           <div class="item-desc">Kuşbaşı</div>
@@ -1023,7 +1013,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323845/01323845-0db847.jpg" alt="Kavurmalı Kaşarlı Pide"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kavurmalı Kaşarlı Pide</div>
           <div class="item-desc">Kavurma, kaşar peyniri</div>
@@ -1033,15 +1023,15 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323853/01323853-f95bac.jpg" alt="Karışık Pide"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
-          <div class="item-name">Karışık Pide ⭐</div>
+          <div class="item-name">Karışık Pide</div>
           <div class="item-desc">Kıyma, kaşar peyniri, sucuk, kuşbaşı</div>
         </div>
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kaşarlı Sucuklu Pide</div>
           <div class="item-desc">Rendelenmiş kaşar peyniri ve sucuk</div>
@@ -1049,7 +1039,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kıymalı Kaşarlı Pide</div>
           <div class="item-desc">Kıyma ve rendelenmiş kaşar peyniri</div>
@@ -1057,7 +1047,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-bread-slice"></i></div>
         <div class="item-info">
           <div class="item-name">Kuşbaşılı Kaşarlı Pide</div>
           <div class="item-desc">Kuşbaşı et ve kaşar peyniri</div>
@@ -1074,15 +1064,15 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323807/01323807-c445c7.jpg" alt="Adana Dürüm"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
-          <div class="item-name">Adana Dürüm ⭐</div>
+          <div class="item-name">Adana Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz</div>
         </div>
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Et Çöp Şiş Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz</div>
@@ -1092,7 +1082,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323847/01323847-15ef57.jpg" alt="Urfa Dürüm"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Urfa Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz</div>
@@ -1100,7 +1090,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Lezzeti Special Dürüm</div>
           <div class="item-desc">Adana kebap, közlenmiş domates, közlenmiş biber, kaşar peyniri</div>
@@ -1110,7 +1100,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323846/01323846-845165.jpg" alt="Kaşarlı Adana Dürüm"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Kaşarlı Adana Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
@@ -1118,7 +1108,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Kaşarlı Urfa Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
@@ -1128,7 +1118,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323831/01323831-91686f.jpg" alt="Tavuk Şiş Dürüm"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Tavuk Şiş Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz</div>
@@ -1136,7 +1126,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-utensils"></i></div>
         <div class="item-info">
           <div class="item-name">Kaşarlı Tavuk Şiş Dürüm</div>
           <div class="item-desc">Domates, soğan, maydanoz, kaşar peyniri</div>
@@ -1151,7 +1141,7 @@
     <div class="menu-grid">
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c6.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-leaf"></i></div>
         <div class="item-info">
           <div class="item-name">Çiğ Köfte</div>
           <div class="item-desc">Tek kişilik</div>
@@ -1159,7 +1149,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-fire-burner"></i></div>
         <div class="item-info">
           <div class="item-name">Sac Kavurma</div>
           <div class="item-desc">Günlük hazırlanır</div>
@@ -1176,7 +1166,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323837/01323837-4f3ea3.jpg" alt="Çoban Salata"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-seedling"></i></div>
         <div class="item-info">
           <div class="item-name">Çoban Salata</div>
           <div class="item-desc">Domates, biber, salatalık</div>
@@ -1184,7 +1174,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-seedling"></i></div>
         <div class="item-info">
           <div class="item-name">Roka Salata</div>
           <div class="item-desc">Roka</div>
@@ -1194,7 +1184,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323860/01323860-08283a.jpg" alt="Mevsim Salata"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-seedling"></i></div>
         <div class="item-info">
           <div class="item-name">Mevsim Salata</div>
           <div class="item-desc">Mevsim sebzeleri</div>
@@ -1204,7 +1194,7 @@
       <div class="item-card fade-up">
         <img src="https://images.migrosone.com/yemek/product/01323851/01323851-fa2977.jpg" alt="Gavurdağı Salatası"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="img-placeholder" style="display:none"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg" alt="" /></div>
+        <div class="img-placeholder" style="display:none"><i class="fas fa-seedling"></i></div>
         <div class="item-info">
           <div class="item-name">Gavurdağı Salatası</div>
           <div class="item-desc">Domates, salatalık, soğan, biber ve nar ekşisi ile</div>
@@ -1219,7 +1209,7 @@
     <div class="menu-grid">
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f36f.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-cookie-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Künefe</div>
           <div class="item-desc">Fıstık</div>
@@ -1227,7 +1217,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f36f.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-cookie-bite"></i></div>
         <div class="item-info">
           <div class="item-name">Antep Katmer</div>
           <div class="item-desc">Fıstık</div>
@@ -1242,7 +1232,7 @@
     <div class="menu-grid">
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Pepsi / Pepsi Max</div>
           <div class="item-desc">33cl</div>
@@ -1250,7 +1240,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Yedigün / 7Up</div>
           <div class="item-desc">33cl</div>
@@ -1258,7 +1248,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Tropicana / Lipton Ice Tea</div>
           <div class="item-desc">33cl</div>
@@ -1266,7 +1256,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Şalgam Suyu</div>
           <div class="item-desc">30cl</div>
@@ -1274,7 +1264,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Ayran</div>
           <div class="item-desc">27cl</div>
@@ -1282,7 +1272,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9c3.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Soda</div>
           <div class="item-desc">20cl</div>
@@ -1290,7 +1280,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4a7.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-droplet"></i></div>
         <div class="item-info">
           <div class="item-name">Su</div>
           <div class="item-desc">50cl</div>
@@ -1298,7 +1288,7 @@
       </div>
 
       <div class="item-card fade-up">
-        <div class="img-placeholder"><img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f964.svg" alt="" /></div>
+        <div class="img-placeholder"><i class="fas fa-glass-water"></i></div>
         <div class="item-info">
           <div class="item-name">Pepsi / Pepsi Max / Yedigün</div>
           <div class="item-desc">1L</div>
@@ -1314,33 +1304,27 @@
   <h2 class="section-title gallery-title">LEZZETLERİMİZ</h2>
   <div class="gallery-grid">
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323827/01323827-1efcab.jpg" alt="Adana Kebap"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323827/01323827-1efcab.jpg" alt="Adana Kebap" />
       <div class="gallery-caption">Adana Kebap</div>
     </div>
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f356.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti" />
       <div class="gallery-caption">Fırında Sarma Beyti Kebap</div>
     </div>
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323826/01323826-d411a5.jpg" alt="Lahmacun"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323826/01323826-d411a5.jpg" alt="Lahmacun" />
       <div class="gallery-caption">Lahmacun</div>
     </div>
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323853/01323853-f95bac.jpg" alt="Karışık Pide"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1fad3.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323853/01323853-f95bac.jpg" alt="Karışık Pide" />
       <div class="gallery-caption">Karışık Pide</div>
     </div>
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323807/01323807-c445c7.jpg" alt="Adana Dürüm"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f959.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323807/01323807-c445c7.jpg" alt="Adana Dürüm" />
       <div class="gallery-caption">Adana Dürüm</div>
     </div>
     <div class="gallery-item fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323851/01323851-fa2977.jpg" alt="Gavurdağı Salatası"
-        onerror="this.src='https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f957.svg'" />
+      <img src="https://images.migrosone.com/yemek/product/01323851/01323851-fa2977.jpg" alt="Gavurdağı Salatası" />
       <div class="gallery-caption">Gavurdağı Salatası</div>
     </div>
   </div>
@@ -1350,8 +1334,7 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-img fade-up">
-      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti Kebap"
-        onerror="this.style.display='none'" />
+      <img src="https://images.migrosone.com/yemek/product/01323839/01323839-01ea63.jpg" alt="Fırında Sarma Beyti Kebap" />
     </div>
     <div class="about-text fade-up">
       <h3>Antep'in Lezzeti,<br>Ümraniye'de.</h3>
@@ -1361,8 +1344,8 @@
       </p>
       <div class="about-stats">
         <div class="stat">
-          <div class="stat-num">4.7★</div>
-          <div class="stat-label">Google</div>
+          <div class="stat-num">4.7</div>
+          <div class="stat-label">Google Puan</div>
         </div>
         <div class="stat">
           <div class="stat-num">28</div>
@@ -1388,33 +1371,21 @@
   <div class="reviews-grid">
     <div class="review-card fade-up">
       <div class="review-stars">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
       <p class="review-text">"Adana kebap tam kıvamında, közlenmiş domates ve biberle servis ediliyor, gerçekten lezzetli."</p>
       <div class="review-author">— Google</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-stars">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
       <p class="review-text">"Lahmacunu ince hamurlu ve baharatlı, tam Antep usulü."</p>
       <div class="review-author">— Google</div>
     </div>
     <div class="review-card fade-up">
       <div class="review-stars">
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
-        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2b50.svg" width="18" height="18" alt="yıldız" />
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
       </div>
       <p class="review-text">"Karışık pide çok doyurucu, fiyatına değer."</p>
       <div class="review-author">— Google</div>
@@ -1448,7 +1419,7 @@
         <span><a href="tel:02165947258" style="color:inherit;text-decoration:none;">(0216) 594 72 58</a></span>
       </div>
 
-      <div style="margin-top:20px;margin-bottom:10px;font-size:0.88rem;color:var(--accent-amber);font-weight:500;letter-spacing:0.04em;">ÇALIŞMA SAATLERİ</div>
+      <div style="margin-top:20px;margin-bottom:10px;font-size:0.88rem;color:var(--accent-orange);font-weight:500;letter-spacing:0.04em;">ÇALIŞMA SAATLERİ</div>
       <div class="hours-table">
         <div class="hours-row">
           <span class="hours-day">Salı</span>
